@@ -1,3 +1,20 @@
+# A tiny JSON library, written entirely in janet (and kept very small).
+#
+# Becuase it is so small and simple (<100 lines), it is easy to copy this file directly into your project.
+# In fact, directly copying this file is the prefered mode of installation.
+#
+# The license is effectively public-domain (dual CC0 & MIT),
+# so no copyright disclaimer is needed (even for proprietary binaries).
+#
+# Source code & issue tracker: https://github.com/Techcable/plainlib
+#
+# VERSION: 0.1.0-dev
+#
+# CHANGELOG:
+#
+# NEXT:
+#   - Initial release
+
 (def- json-pattern (do
   (defn ascii-split [str] (map string/from-bytes (string/bytes str)))
   (defn janet-builtin-escape [c] (parse (string/format ``"\%s"`` c)))
@@ -43,6 +60,10 @@
       # NOTE: Use builtin parse for unicode escapes
       :unicodeEscape (/ (capture (* "u" (repeat 4 (+ :h :H)))) ,parse)})))
 
-(defn decode [text]
+(defn decode
+  ``Decodes the specified json string into a janet value.
+
+  Relies on Janet's builtin peg engine for all internal parse work.``
+  [text]
   (def arr (peg/match json-pattern text))
   (if (nil? arr) (error "Invalid json!") (first arr)))
