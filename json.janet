@@ -23,7 +23,7 @@
                 (/ (+ "true" "false" "null") ,literal-table))
       :object (/ (* "{" (+ :members) "}") ,struct)
       :members (+ (* (some (* :member ",")) :member) :member)
-      :member (* :s* :string :s* ":" :element)
+      :member (* :s* (/ :string ,keyword) :s* ":" :element)
       :elements (+ (* (some (* :element ",")) :element))
       :array (group (* "[" (+ :elements :s*) "]"))
       # After validating, we can trust builtin parse to return a floating point number
