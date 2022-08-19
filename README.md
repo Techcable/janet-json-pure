@@ -20,7 +20,6 @@ You can run `jpm install` and it will be installed as `pure/janet` module.
 The "pure" prefix helps reflect its difference from the regular `json` module (and avoids conflicts).
 
 ## TODO
-- **HIGH**: Implement *encoding*
 - More flexiblity on encoding (callbacks?)
 - Register on official package list
 - Support bigints through [janet-big](https://github.com/andrewchambers/janet-big)?
