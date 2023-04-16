@@ -45,7 +45,7 @@
       :object (/ (* "{" (+ :members) "}") ,struct)
       :members (+ (* (some (* :member ",")) :member) :member)
       :member (* :s* (/ :string ,keyword) :s* ":" :element)
-      :elements (+ (* (some (* :element ",")) :element))
+      :elements (+ (* (some (* :element ",")) :element) :element)
       :array (group (* "[" (+ :elements :s*) "]"))
       # After validating, we can trust builtin parse to return a floating point number
       #
