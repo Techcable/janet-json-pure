@@ -98,7 +98,7 @@
   (buffer/push buf "\"")
   buf) 
 
-(defn- encode-seq [s] (string "[" (string/join (map  s) ",") "]"))
+(defn- encode-seq [s] (string "[" (string/join (map encode s) ",") "]"))
 
 (defn- encode-map [m] (string "{" (string/join (seq [[key val] :pairs m] (string/format "%s: %s" (encode key) (encode val))) ",") "}"))
 
